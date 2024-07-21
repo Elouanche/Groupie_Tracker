@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistes</title>
+    <link rel="stylesheet" href="./static/css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Loved+by+the+King&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div id="mySidenav" class="sidenav">
+            <a id="closeBtn" href="#" class="close">×</a>
+            <ul>
+                <li><a href="/about">A propos</a></li>
+            </ul>
+        </div>
+          
+        <a href="#" id="openBtn">
+            <span class="burger-icon">
+                <span></span>
+                <span></span>
+                <span></span>
+            </span>
+        </a>
+    
+        <div class="baner">
+            <h1 id="top">GROUPIE TRACKER</h1>
+            <svg class="wave-header" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+                <path fill="#fff" fill-opacity="1" d="M0,288L48,288C96,288,192,288,288,261.3C384,235,480,181,576,186.7C672,192,768,256,864,272C960,288,1056,256,1152,213.3C1248,171,1344,117,1392,90.7L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+            </svg>
+        </div>
+    
+        <ul class="fle haut">
+            <a href="#top"></a>
+        </ul>
+    </header>
+
+    <main>
+       
+        <div class="div_artist">
+            <h2>Artistes</h2>
+            <div class="artist-container">
+                {{range $i, $artist := .artists}}
+                <a href="/concerts?artistID={{.id}}&artistName={{.name}}&artistImage={{.image}}&artistYearStarted={{.yearStarted}}&artistFirstAlbum={{.firstAlbum}}&artistMembers={{range $i, $member := .members}}{{if $i}},{{end}}{{$member}}{{end}}">
+                    <div class="artist-card">
+                        <div class="flip-card-front">
+                            <!-- Contenu de la face avant -->
+                            <img src="{{.image}}" alt="{{.name}}">
+                            <h3>{{.name}}</h3>
+                            
+                        </div>
+                        <div class="flip-card-back">
+                            <p>Year Started:<br> {{.creationDate}}<br></p>
+                            <p>First Album: <br>{{.firstAlbum}} <br></p>
+                            <!-- Vérifie si Members est non vide -->
+                            {{if .members}}
+                                <p>Members: <br>{{range $j, $member := .members}}<br>- {{if $j}} {{end}}{{.}}{{end}}</p>
+                            {{end}}
+                        </div>
+
+                    </div> 
+                </a>               
+                {{end}}
+            </div>            
+        </div>
+    </main>
+    
+    <footer>
+        <p>Groupie Tracker créé par Elouan CHEDALLEUX et Rayan Deschamps</p> 
+    </footer>
+    <script src="./static/js/script.js"></script>
+</body>
+</html>

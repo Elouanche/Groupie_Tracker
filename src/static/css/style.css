@@ -1,0 +1,405 @@
+/* style.css */
+
+:root {
+    --black: #000000;
+    --white: #fefefe;
+    --blue : #145275;
+}
+
+/*CSS pour toutes les pages*/
+main {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(255, 255, 255);
+    margin: 0;
+    min-height: 100vh;
+}
+
+
+/*CSS index.html*/
+
+ul.fle {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+.baner {
+    background: url(../img/img_concert.jpg);
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    min-height: 70vh;
+    color: #075b66;
+
+}
+
+.baner h1 {
+    text-align: center;
+    color: var(--black);
+    padding: 10%;
+    font-size: 3em; 
+    text-shadow: 2px 2px 4px rgba(255, 255, 255, 1); 
+}
+
+.baner .wave-header {
+    position: absolute;
+    bottom: -1px;
+    width: 100%;
+    left: 0;
+}
+
+.div_artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--white);
+    color: var(--white);
+    padding: 20px;
+    margin-bottom: 20px;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.div_artist img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+.div_artist h2 {
+    color: var(--black);
+    margin-bottom: 5%;
+}
+
+.div_artist p {
+    margin-bottom: 10px;
+}
+
+.artist-container {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+.artist-card {
+    border: 1px solid var(--white);
+    padding: 10px;
+    text-align: center;
+    background-color: var(--black);
+    color: var(--white);
+    transition: transform 1000ms;
+    transform-style: preserve-3d;
+    border-radius: 10%;
+    width: 100%;
+    height: 400px;
+    max-width: 300px;
+}
+
+.artist-card:hover {
+    cursor: pointer;
+    transform: rotateY(180deg);
+}
+
+.artist-card img {
+    max-width: 100%;
+    max-height: 100%;
+    border-radius: 10%;
+}
+
+.artist-card h3 {
+    margin-top: 20%;
+    margin-bottom: 10%;
+    font-family: "Loved by the King", cursive;
+    font-style: normal;
+    font-size: 30px;
+}
+
+.artist-card p {
+    margin: 5px 0;
+}
+
+.artist-card .flip-card-front,
+.artist-card .flip-card-back {
+    border-radius: 2rem;
+    box-shadow: 0 0 5px 2px rgba(50, 50, 50, 0.25);
+    backface-visibility: hidden;
+}
+
+.artist-card .flip-card-back {
+    background-color: var(--black);
+    transform: rotateY(180deg);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 2rem;
+    backface-visibility: hidden;
+}
+
+
+/*CSS pour location et dates*/
+.relation-page {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+.relation-page h2 {
+    color: var(--white);
+    border-bottom: 1px solid var(--white);
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+
+.relation-page ul {
+    list-style-type: none;
+}
+
+.relation-page ul li {
+    margin-bottom: 10px;
+}
+
+footer {
+    background-color: var(--black);
+    text-align: center;
+    text-decoration: none;
+    color: var(--white);
+    bottom: 0;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    text-decoration: underline red;
+}
+
+
+/* Styles spécifiques pour la flèche vers le haut */
+ul.fle.haut a {
+    display: block;
+    width: 0;
+    height: 0;
+    border-left: 30px solid transparent;
+    border-right: 30px solid transparent;
+    border-bottom: 45px solid #900000;
+}
+
+/* Optionnel : effet de survol */
+ul.fle.haut a:hover {
+    border-bottom-color: #ff0000;
+}
+
+.sidenav {
+    height: 100%;
+    width: 250px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: -250px;
+    background-color: var(--black);
+    padding-top: 60px;
+    transition: left 0.5s ease;
+}
+
+.sidenav {
+    height: 100%;
+    width: 300px;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: -300px;
+    background-color: var(--black);
+    padding-top: 60px;
+    transition: left 0.5s ease;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #515151;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: var(--white);
+}
+
+.sidenav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.sidenav.active {
+    left: 0;
+}
+
+.sidenav .close {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+}
+
+.burger-icon {
+    z-index: 999;
+    position: fixed;
+    top: 20px;
+    left: 20px;
+}
+
+.burger-icon span {
+    display: block;
+    width: 35px;
+    height: 5px;
+    background-color: rgb(121, 121, 121);
+    margin: 6px 0;
+}
+
+.search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.search-bar input[type="text"] {
+    padding: 10px;
+    border-radius: 5px 0 0 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.search-bar button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #075b66;
+    color: #fff;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    outline: none;
+}
+
+.search-bar button[type="submit"]:hover {
+    background-color: var(--blue);
+}
+
+.d_artist {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.d_artist img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.a-container {
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    border: 1px solid var(--black);
+    padding: 20px;
+    background-color: var(--white); 
+    color: var(--black); 
+    border-radius: 10px;
+    margin-bottom: 20px;
+    width: calc(100% - 40px); 
+    max-width: 600px; 
+}
+
+.card h2 {
+    font-family: "Loved by the King", cursive;
+    font-style: normal;
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.card ul {
+    list-style: none;
+    padding: 0;
+}
+
+.card ul li {
+    margin-bottom: 10px;
+}
+
+body.Location .card {
+    background-color: var(--black);
+    color: var(--white);
+}
+
+body.relation-page {
+    background-color: var(--black); 
+    color: var(--white);
+}
+
+.card .front {
+    background-color: var(--black); 
+    color: var(--white);
+    border: 5%  var(--white); 
+}
+
+.btn-retour {
+    margin-top: 1%;
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #075b66;
+    color: var(--white);
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.btn-retour:hover {
+    background-color: var(--blue);
+}
+
+/*Responsive*/
+@media screen and (max-width: 1000px) {
+    .artist-container {
+        grid-template-columns: repeat(2, minmax(200px, 1fr));
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .artist-container {
+        grid-template-columns: repeat(1, minmax(200px, 1fr));
+    }
+}

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Concerts</title>
+    <link rel="stylesheet" href="./static/css/style.css">
+</head>
+
+<body class="relation-page">
+
+    <header> 
+        <div class="baner">
+        <h1>Liste des concerts pour {{.ArtistName}}</h1>
+    </div>  
+    </header>
+
+    <main>
+            <div class="a-container">
+                {{range $api, $relations := .API}}
+                <div class="card">
+                    <div class="front">
+                        <ul>
+                            {{range $relation := $relations}}
+                            <li><span class="relation-id" data-relation-id="{{$relation.ID}}"></span></li>
+                                <li>Concerts:
+                                    <ul>
+                                        {{range $event := $relation.Events}}
+                                            <li>lieu : {{$event.Date}}, date : {{$event.Location}}</li>
+                                        {{end}}
+                                    </ul>
+                                </li>
+                            {{end}}
+                        </ul>
+                    </div>
+                </div>
+                {{end}}
+            </div>
+
+            <div class="d_artist">
+                <img src="{{.ArtistImage}}" alt="{{.ArtistName}}">
+                <p>Premier album : {{.ArtistFirstAlbum}}</p>
+                <p>Membres : {{range $i, $member := .ArtistMembers}}{{if $i}}, {{end}}{{$member}}{{end}}</p>
+            </div>
+    </main>
+
+<footer>
+    <iframe id="spotify-iframe" style="border-radius:12px" width="100%" height="352" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+    <a href="index.html" class="btn-retour">Retour à la page d'accueil</a>
+          
+</footer>
+
+<script>
+    var liens = {
+1: "https://open.spotify.com/embed/track/4u7EnebtmKWzUH433cf5Qv?utm_source=generator",
+2: "https://open.spotify.com/embed/track/1HnriuDThLq7bEl1QKiaJL?utm_source=generator",
+3: "https://open.spotify.com/embed/track/7rPzEczIS574IgPaiPieS3?utm_source=generator",
+4: "https://open.spotify.com/embed/track/0qlZQGo9f7Ea24PPLnXq2R?utm_source=generator",
+5: "https://open.spotify.com/embed/track/7floNISpH8VF4z4459Qo18?utm_source=generator",
+6: "https://open.spotify.com/embed/track/1OubIZ0ARYCUq5kceYUQiO?utm_source=generator",
+7: "https://open.spotify.com/embed/track/4X4v3KtkUXwXvDBw5KS9cp?utm_source=generator",
+8: "https://open.spotify.com/embed/track/2tudvzsrR56uom6smgOcSf?utm_source=generator",
+9: "https://open.spotify.com/embed/track/2SiXAy7TuUkycRVbbWDEpo?utm_source=generator",
+10: "https://open.spotify.com/embed/track/6QewNVIDKdSl8Y3ycuHIei?utm_source=generator",
+11: "https://open.spotify.com/embed/track/1htQDV8JxSuXG2QsNj5ttr?utm_source=generator",
+12: "https://open.spotify.com/embed/track/0U10zFw4GlBacOy9VDGfGL?utm_source=generator",
+13: "https://open.spotify.com/embed/track/0xpBr84T3FTm9j4D1MdPtk?utm_source=generator",
+14: "https://open.spotify.com/embed/track/6mYXXXgFZZmk2mgejwSwdN?utm_source=generator",
+15: "https://open.spotify.com/embed/track/78lgmZwycJ3nzsdgmPPGNx?utm_source=generator",
+16: "https://open.spotify.com/embed/track/2aoo2jlRnM3A0NyLQqMN2f?utm_source=generator",
+17: "https://open.spotify.com/embed/track/5ubvP9oKmxLUVq506fgLhk?utm_source=generator",
+18: "https://open.spotify.com/embed/track/0XHWClSz0v6RIaRSGqJH3X?utm_source=generator",
+19: "https://open.spotify.com/embed/track/1xsYj84j7hUDDnTTerGWlH?utm_source=generator",
+20: "https://open.spotify.com/embed/track/4bO6DljpuAeQh6HS20i0I5?utm_source=generator",
+21: "https://open.spotify.com/embed/track/2iJpjciYl8vfQbb543b5Pb?utm_source=generator",
+22: "https://open.spotify.com/embed/track/0lP4HYLmvowOKdsQ7CVkuq?utm_source=generator",
+23: "https://open.spotify.com/embed/track/1zB4vmk8tFRmM9UULNzbLB?utm_source=generator",
+24: "https://open.spotify.com/embed/track/285pBltuF7vW8TeWk8hdRR?utm_source=generator",
+25: "https://open.spotify.com/embed/track/5tz69p7tJuGPeMGwNTxYuV?utm_source=generator",
+26: "https://open.spotify.com/embed/track/2qxmye6gAegTMjLKEBoR3d?utm_source=generator",
+27: "https://open.spotify.com/embed/track/23EmReYCtIOWmBFjyaNXyf?utm_source=generator",
+28: "https://open.spotify.com/embed/track/6pb5DtlAeG95dNQLHiArRU?utm_source=generator",
+29: "https://open.spotify.com/embed/track/0RiRZpuVRbi7oqRdSMwhQY?utm_source=generator",
+30: "https://open.spotify.com/embed/track/42VsgItocQwOQC3XWZ8JNA?utm_source=generator",
+31: "https://open.spotify.com/embed/track/68Dni7IE4VyPkTOH9mRWHr?utm_source=generator",
+32: "https://open.spotify.com/embed/track/3K8rbysInYs6bEhMGgm0wh?utm_source=generator",
+33: "https://open.spotify.com/embed/track/1RjU7UhRICmdFPKxCucLgq?utm_source=generator",
+34: "https://open.spotify.com/embed/track/7snQQk1zcKl8gZ92AnueZW?utm_source=generator",
+35: "https://open.spotify.com/embed/track/5n8Aro6j1bEGIy7Tpo7FV7?utm_source=generator",
+36: "https://open.spotify.com/embed/track/2ouuCTFyeTU8WEZ5WNH7BX?utm_source=generator",
+37: "https://open.spotify.com/embed/track/2AT8iROs4FQueDv2c8q2KE?utm_source=generator",
+38: "https://open.spotify.com/embed/track/0a7BloCiNzLDD9qSQHh5m7?utm_source=generator",
+39: "https://open.spotify.com/embed/track/1RKUoGiLEbcXN4GY4spQDx?utm_source=generator",
+40: "https://open.spotify.com/embed/track/1rh232CwAy3EDEWFJkwH88?utm_source=generator",
+41: "https://open.spotify.com/embed/track/2nLtzopw4rPReszdYBJU6h?utm_source=generator",
+42: "https://open.spotify.com/embed/track/3d9DChrdc6BOeFsbrZ3Is0?utm_source=generator",
+43: "https://open.spotify.com/embed/track/561jH07mF1jHuk7KlaeF0s?utm_source=generator",
+44: "https://open.spotify.com/embed/track/6nTiIhLmQ3FWhvrGafw2zj?utm_source=generator",
+45: "https://open.spotify.com/embed/track/2MuWTIM3b0YEAskbeeFE1i?utm_source=generator",
+46: "https://open.spotify.com/embed/track/1mea3bSkSGXuIRvnydlB5b?utm_source=generator",
+47: "https://open.spotify.com/embed/track/2bL2gyO6kBdLkNSkxXNh6x?utm_source=generator",
+48: "https://open.spotify.com/embed/track/2Z8WuEywRWYTKe1NybPQEW?utm_source=generator",
+49: "https://open.spotify.com/embed/track/2PzU4IB8Dr6mxV3lHuaG34?utm_source=generator",
+50: "https://open.spotify.com/embed/track/3lPr8ghNDBLc2uZovNyLs9?utm_source=generator",
+51: "https://open.spotify.com/embed/track/5UWwZ5lm5PKu6eKsHAGxOk?utm_source=generator",
+52: "https://open.spotify.com/embed/track/6RUKPb4LETWmmr3iAEQktW?utm_source=generator"
+};
+var x = document.querySelector('.relation-id').getAttribute('data-relation-id');
+    // Récupérer le lien correspondant à l'ID 1
+    var lienID1 = liens[x];
+    
+    // Mettre à jour l'attribut src de l'iframe avec le lien correspondant à l'ID 1
+    document.getElementById("spotify-iframe").src = lienID1;
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
